@@ -42,6 +42,8 @@ def post_player():
             return error("Invalid JSON",400)
         if not data.get("name"):
             return error("Name required",400)
+        if not data.get("hp"):
+            return error("HP required",400)
         player_id = pm.PlayerModel.create(data.get("name"),data.get("hp"))
         return success({"id":player_id,"name": data.get("name"), "hp": data.get("hp")},201)
 
